@@ -2,7 +2,6 @@
 
 
 #include "LuaProxyWidget.h"
-#include "Components/Button.h"
 #include "Components/ContentWidget.h"
 #include "LuaDelegate.h"
 #include "LuaProxySlot.h"
@@ -22,7 +21,8 @@ FLuaValue ULuaProxyWidget::LuaMetaMethodIndex_Implementation(const FString& Key)
 {
 	if (Key == "SetContent")
 	{
-		FLuaValue SetContentWidget = FLuaValue([this](TArray<FLuaValue> LuaArgs) -> FLuaValueOrError {
+		FLuaValue SetContentWidget = FLuaValue([this](TArray<FLuaValue> LuaArgs) -> FLuaValueOrError
+		{
 			if (!Widget->IsA<UContentWidget>())
 			{
 				return FString("SetContent can be called only on ContentWidget instances");
@@ -32,7 +32,8 @@ FLuaValue ULuaProxyWidget::LuaMetaMethodIndex_Implementation(const FString& Key)
 				return FString("Expected first argument to be a widget");
 			}
 
-			UPanelSlot* Slot = Cast<UContentWidget>(Widget)->SetContent(Cast<ULuaProxyWidget>(LuaArgs[0].Object)->Widget);
+			UPanelSlot* Slot = Cast<UContentWidget>(Widget)->SetContent(
+				Cast<ULuaProxyWidget>(LuaArgs[0].Object)->Widget);
 			if (Slot)
 			{
 				ULuaProxySlot* NewProxySlot = NewObject<ULuaProxySlot>(GetLuaState());
@@ -42,13 +43,14 @@ FLuaValue ULuaProxyWidget::LuaMetaMethodIndex_Implementation(const FString& Key)
 			}
 
 			return FLuaValue();
-			});
+		});
 
 		return SetContentWidget;
 	}
-	else if (Key == "AddChild")
+	if (Key == "AddChild")
 	{
-		FLuaValue SetContentWidget = FLuaValue([this](TArray<FLuaValue> LuaArgs) -> FLuaValueOrError {
+		FLuaValue SetContentWidget = FLuaValue([this](TArray<FLuaValue> LuaArgs) -> FLuaValueOrError
+		{
 			if (!Widget->IsA<UPanelWidget>())
 			{
 				return FString("AddChild can be called only on PanelWidget instances");
@@ -67,11 +69,11 @@ FLuaValue ULuaProxyWidget::LuaMetaMethodIndex_Implementation(const FString& Key)
 				return FLuaValue(NewProxySlot);
 			}
 			return FLuaValue();
-			});
+		});
 
 		return SetContentWidget;
 	}
-	else if (Key == "ColorAndOpacity" || Key == "Text" || Key == "CheckedState" || Key == "BrushColor" || Key == "Brush")
+	if (Key == "ColorAndOpacity" || Key == "Text" || Key == "CheckedState" || Key == "BrushColor" || Key == "Brush")
 	{
 		return GetLuaState()->GetLuaValueFromProperty(Widget, *Key);
 	}

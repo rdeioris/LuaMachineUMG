@@ -2,7 +2,6 @@
 
 
 #include "LuaProxySlot.h"
-#include "Components/Button.h"
 #include "Components/ContentWidget.h"
 #include "LuaDelegate.h"
 #include "LuaState.h"

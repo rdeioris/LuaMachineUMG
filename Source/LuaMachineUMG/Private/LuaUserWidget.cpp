@@ -40,7 +40,7 @@ FLuaValue ULuaUserWidget::LuaMetaMethodIndex_Implementation(const FString& Key)
 		return CreateNewWidget;
 
 	}
-	else if (Key == "SetRoot")
+	if (Key == "SetRoot")
 	{
 		FLuaValue SetRootWidget = FLuaValue([this](TArray<FLuaValue> LuaArgs) -> FLuaValueOrError {
 			if (!LuaArgs.IsValidIndex(0) || !LuaArgs[0].Object || !LuaArgs[0].Object->IsA<ULuaProxyWidget>())

@@ -23,6 +23,5 @@ public:
 	UPROPERTY()
 	UPanelSlot* Slot;
 
-	class ULuaState* GetLuaState();
-	
+	ULuaState* GetLuaState();
 };

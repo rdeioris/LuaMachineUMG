@@ -24,8 +24,7 @@ public:
 	UWidget* Widget;
 
 	UPROPERTY()
-	TSet<class ULuaProxySlot*> Proxies;
+	TSet<ULuaProxySlot*> Proxies;
 
-	class ULuaState* GetLuaState();
-	
+	ULuaState* GetLuaState();
 };
