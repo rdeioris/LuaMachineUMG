@@ -24,4 +24,7 @@ public:
 	UPanelSlot* Slot;
 
 	ULuaState* GetLuaState();
+
+private:
+	bool IsKnownProperty(const FString& Key);
 };

@@ -25,4 +25,7 @@ public:
 	UCanvasPanelSlot* Slot;
 
 	ULuaState* GetLuaState();
+
+private:
+	static bool IsKnownProperty(const FString& Key);
 };

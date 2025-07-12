@@ -18,7 +18,7 @@ FLuaValue ULuaProxyCanvasPanelSlot::LuaMetaMethodToString_Implementation()
 
 FLuaValue ULuaProxyCanvasPanelSlot::LuaMetaMethodIndex_Implementation(const FString& Key)
 {
-	if (Key == "Padding" || Key == "Size" || Key == "LayoutData" || Key == "bAutoSize")
+	if (IsKnownProperty(Key))
 	{
 		return GetLuaState()->GetLuaValueFromProperty(Slot, *Key);
 	}
@@ -29,7 +29,7 @@ FLuaValue ULuaProxyCanvasPanelSlot::LuaMetaMethodIndex_Implementation(const FStr
 bool ULuaProxyCanvasPanelSlot::LuaMetaMethodNewIndex_Implementation(const FString& Key, FLuaValue Value)
 {
 	bool bSuccess = false;
-	if (Key == "Padding" || Key == "Size" || Key == "LayoutData" || Key == "bAutoSize")
+	if (IsKnownProperty(Key))
 	{
 		bSuccess = GetLuaState()->SetPropertyFromLuaValue(Slot, *Key, Value);
 	}
@@ -40,4 +40,16 @@ bool ULuaProxyCanvasPanelSlot::LuaMetaMethodNewIndex_Implementation(const FStrin
 	}
 
 	return bSuccess;
+}
+
+bool ULuaProxyCanvasPanelSlot::IsKnownProperty(const FString& Key)
+{
+	static const TSet<FName> KnownProperties = {
+		"Padding",
+		"Size",
+		"LayoutData",
+		"bAutoSize",
+	};
+
+	return KnownProperties.Contains(FName(Key));
 }

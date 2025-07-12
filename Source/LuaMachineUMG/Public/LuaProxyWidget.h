@@ -27,4 +27,7 @@ public:
 	TSet<UVisual*> Proxies;
 
 	ULuaState* GetLuaState();
+
+private:
+	bool IsKnownProperty(const FString& Key);
 };
