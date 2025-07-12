@@ -1,22 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "LuaProxySlot.h"
-#include "Components/ContentWidget.h"
+#include "LuaProxyCanvasPanelSlot.h"
 #include "LuaDelegate.h"
 #include "LuaState.h"
+#include "Components/CanvasPanelSlot.h"
 
-ULuaState* ULuaProxySlot::GetLuaState()
+ULuaState* ULuaProxyCanvasPanelSlot::GetLuaState()
 {
 	return Cast<ULuaState>(GetOuter());
 }
 
-FLuaValue ULuaProxySlot::LuaMetaMethodToString_Implementation()
+FLuaValue ULuaProxyCanvasPanelSlot::LuaMetaMethodToString_Implementation()
 {
 	return FString::Printf(TEXT("LuaProxySlot@%p"), this);
 }
 
-FLuaValue ULuaProxySlot::LuaMetaMethodIndex_Implementation(const FString& Key)
+FLuaValue ULuaProxyCanvasPanelSlot::LuaMetaMethodIndex_Implementation(const FString& Key)
 {
 	if (IsKnownProperty(Key))
 	{
@@ -26,7 +26,7 @@ FLuaValue ULuaProxySlot::LuaMetaMethodIndex_Implementation(const FString& Key)
 	return FLuaValue();
 }
 
-bool ULuaProxySlot::LuaMetaMethodNewIndex_Implementation(const FString& Key, FLuaValue Value)
+bool ULuaProxyCanvasPanelSlot::LuaMetaMethodNewIndex_Implementation(const FString& Key, FLuaValue Value)
 {
 	bool bSuccess = false;
 	if (IsKnownProperty(Key))
@@ -42,7 +42,7 @@ bool ULuaProxySlot::LuaMetaMethodNewIndex_Implementation(const FString& Key, FLu
 	return bSuccess;
 }
 
-bool ULuaProxySlot::IsKnownProperty(const FString& Key)
+bool ULuaProxyCanvasPanelSlot::IsKnownProperty(const FString& Key)
 {
 	static const TSet<FName> KnownProperties = {
 		"Padding",

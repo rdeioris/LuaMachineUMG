@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "LuaUserDataInterface.h"
 #include "Components/PanelSlot.h"
-#include "LuaProxySlot.generated.h"
+#include "LuaProxyCanvasPanelSlot.generated.h"
+
+class UCanvasPanelSlot;
 
 UCLASS()
-class LUAMACHINEUMG_API ULuaProxySlot : public UVisual, public ILuaUserDataInterface
+class LUAMACHINEUMG_API ULuaProxyCanvasPanelSlot : public UVisual, public ILuaUserDataInterface
 {
 	GENERATED_BODY()
 
@@ -21,10 +22,10 @@ public:
 	FLuaValue LuaMetaMethodToString_Implementation() override;
 
 	UPROPERTY()
-	UPanelSlot* Slot;
+	UCanvasPanelSlot* Slot;
 
 	ULuaState* GetLuaState();
 
 private:
-	bool IsKnownProperty(const FString& Key);
+	static bool IsKnownProperty(const FString& Key);
 };

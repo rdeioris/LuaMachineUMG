@@ -26,6 +26,7 @@ public class LuaMachineUMG : ModuleRules
 			new string[]
 			{
 				"Core",
+				"LuaMachine",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);

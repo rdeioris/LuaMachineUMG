@@ -8,9 +8,6 @@
 #include "Components/Widget.h"
 #include "LuaProxyWidget.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LUAMACHINEUMG_API ULuaProxyWidget : public UObject, public ILuaUserDataInterface
 {
@@ -27,8 +24,10 @@ public:
 	UWidget* Widget;
 
 	UPROPERTY()
-	TSet<class ULuaProxySlot*> Proxies;
+	TSet<UVisual*> Proxies;
 
-	class ULuaState* GetLuaState();
-	
+	ULuaState* GetLuaState();
+
+private:
+	bool IsKnownProperty(const FString& Key);
 };

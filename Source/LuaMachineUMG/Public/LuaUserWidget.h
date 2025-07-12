@@ -8,9 +8,6 @@
 #include "LuaState.h"
 #include "LuaUserWidget.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LUAMACHINEUMG_API ULuaUserWidget : public UUserWidget, public ILuaUserDataInterface
 {
