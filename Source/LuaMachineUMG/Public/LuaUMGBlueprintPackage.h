@@ -6,9 +6,6 @@
 #include "LuaBlueprintPackage.h"
 #include "LuaUMGBlueprintPackage.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LUAMACHINEUMG_API ULuaUMGBlueprintPackage : public ULuaBlueprintPackage
 {

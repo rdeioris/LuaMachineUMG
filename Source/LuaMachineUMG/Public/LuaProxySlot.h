@@ -8,9 +8,6 @@
 #include "Components/Widget.h"
 #include "LuaProxySlot.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class LUAMACHINEUMG_API ULuaProxySlot : public UObject, public ILuaUserDataInterface
 {
