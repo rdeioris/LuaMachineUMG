@@ -5,11 +5,11 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "LuaUserDataInterface.h"
-#include "Components/Widget.h"
+#include "Components/PanelSlot.h"
 #include "LuaProxySlot.generated.h"
 
 UCLASS()
-class LUAMACHINEUMG_API ULuaProxySlot : public UObject, public ILuaUserDataInterface
+class LUAMACHINEUMG_API ULuaProxySlot : public UVisual, public ILuaUserDataInterface
 {
 	GENERATED_BODY()
 

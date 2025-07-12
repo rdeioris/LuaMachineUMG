@@ -4,8 +4,10 @@
 #include "LuaProxyWidget.h"
 #include "Components/ContentWidget.h"
 #include "LuaDelegate.h"
+#include "LuaProxyCanvasPanelSlot.h"
 #include "LuaProxySlot.h"
 #include "LuaState.h"
+#include "Components/CanvasPanel.h"
 
 ULuaState* ULuaProxyWidget::GetLuaState()
 {

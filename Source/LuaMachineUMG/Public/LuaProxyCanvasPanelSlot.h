@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "LuaUserDataInterface.h"
-#include "Components/Widget.h"
-#include "LuaProxyWidget.generated.h"
+#include "Components/PanelSlot.h"
+#include "LuaProxyCanvasPanelSlot.generated.h"
+
+class UCanvasPanelSlot;
 
 UCLASS()
-class LUAMACHINEUMG_API ULuaProxyWidget : public UObject, public ILuaUserDataInterface
+class LUAMACHINEUMG_API ULuaProxyCanvasPanelSlot : public UVisual, public ILuaUserDataInterface
 {
 	GENERATED_BODY()
 
@@ -21,10 +22,7 @@ public:
 	FLuaValue LuaMetaMethodToString_Implementation() override;
 
 	UPROPERTY()
-	UWidget* Widget;
-
-	UPROPERTY()
-	TSet<UVisual*> Proxies;
+	UCanvasPanelSlot* Slot;
 
 	ULuaState* GetLuaState();
 };
